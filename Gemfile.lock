@@ -68,7 +68,10 @@ GEM
       tzinfo (~> 2.0)
     ast (2.4.2)
     backport (1.2.0)
+<<<<<<< HEAD
     bcrypt (3.1.18)
+=======
+>>>>>>> 49d4fe13bbe964ed11087950a60f53374bf66c8f
     benchmark (0.2.1)
     bindex (0.8.1)
     bootsnap (1.15.0)
@@ -127,6 +130,7 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.1)
     minitest (5.16.3)
     msgpack (1.6.0)
     net-imap (0.3.2)
@@ -139,13 +143,21 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.13.10-x86-mingw32)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+<<<<<<< HEAD
     orm_adapter (0.5.0)
     parallel (1.22.1)
     parser (3.2.2.0)
       ast (~> 2.4.1)
     pg (1.4.5-x86-mingw32)
+=======
+    parallel (1.23.0)
+    parser (3.2.2.1)
+      ast (~> 2.4.1)
+    pg (1.4.5)
+>>>>>>> 49d4fe13bbe964ed11087950a60f53374bf66c8f
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -183,12 +195,19 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+<<<<<<< HEAD
     regexp_parser (2.7.0)
     reline (0.3.2)
       io-console (~> 0.5)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+=======
+    rbs (2.8.4)
+    regexp_parser (2.8.0)
+    reline (0.3.2)
+      io-console (~> 0.5)
+>>>>>>> 49d4fe13bbe964ed11087950a60f53374bf66c8f
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.5)
@@ -209,7 +228,11 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
+<<<<<<< HEAD
     rubocop (1.49.0)
+=======
+    rubocop (1.50.2)
+>>>>>>> 49d4fe13bbe964ed11087950a60f53374bf66c8f
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.2.0.0)
@@ -222,18 +245,31 @@ GEM
     rubocop-ast (1.28.0)
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
+<<<<<<< HEAD
     solargraph (0.48.0)
       backport (~> 1.2)
       benchmark
       bundler (>= 1.17.2)
+=======
+    solargraph (0.49.0)
+      backport (~> 1.2)
+      benchmark
+      bundler (~> 2.0)
+>>>>>>> 49d4fe13bbe964ed11087950a60f53374bf66c8f
       diff-lcs (~> 1.4)
       e2mmap
       jaro_winkler (~> 1.5)
       kramdown (~> 2.3)
       kramdown-parser-gfm (~> 1.1)
       parser (~> 3.0)
+<<<<<<< HEAD
       reverse_markdown (>= 1.0.5, < 3)
       rubocop (>= 0.52)
+=======
+      rbs (~> 2.0)
+      reverse_markdown (~> 2.0)
+      rubocop (~> 1.38)
+>>>>>>> 49d4fe13bbe964ed11087950a60f53374bf66c8f
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
@@ -258,8 +294,11 @@ GEM
     tzinfo-data (1.2022.7)
       tzinfo (>= 1.0.0)
     unicode-display_width (2.4.2)
+<<<<<<< HEAD
     warden (1.2.9)
       rack (>= 2.0.9)
+=======
+>>>>>>> 49d4fe13bbe964ed11087950a60f53374bf66c8f
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -268,10 +307,15 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+<<<<<<< HEAD
     yard (0.9.29)
+=======
+    yard (0.9.34)
+>>>>>>> 49d4fe13bbe964ed11087950a60f53374bf66c8f
     zeitwerk (2.6.6)
 
 PLATFORMS
+  arm64-darwin-21
   x86-mingw32
 
 DEPENDENCIES
@@ -296,7 +340,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.1.3p185
+   ruby 3.2.1p31
 
 BUNDLED WITH
    2.3.26
