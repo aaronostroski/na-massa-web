@@ -13,9 +13,6 @@ module NaMassaWeb
     config.time_zone = "Brasilia"
     config.i18n.available_locales = ['pt-BR', :en]
     config.i18n.default_locale = 'pt-BR'
-
-    config.active_job.queue_adapter = :good_job
-    config.action_cable.disable_request_forgery_protection = true
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
