@@ -10,6 +10,9 @@ module.exports = {
     "./config/initializers/heroicon.rb"
   ],
   theme: {
+    container: {
+      padding: '2rem'
+    },
     colors: {
       ...colors,
       primary: {

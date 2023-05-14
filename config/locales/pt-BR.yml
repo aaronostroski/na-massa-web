@@ -258,3 +258,11 @@ pt-BR:
       truncate: "&hellip;"
   menu:
     admin: Administradores
+  layouts:
+    site:
+      navbar:
+        sign_in: Entrar
+        new_account: Cadastrar
+      footer:
+        maded_by: "Feito por: %{name}"
+        inspired_by: Rocketseat Coffee Delivery

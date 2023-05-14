@@ -1,0 +1,16 @@
+<nav class="container mx-auto flex justify-between items-center my-2">
+  <%= image_tag('logo.svg', class: "h-30") %>
+  <ul class="flex">
+    <li class="mr-2">
+      <%= link_to(nil, class: "flex items-center text-primary border rounded-md border-1 border-red-600 px-4 py-1 transition-all ease-in-out hover:text-white hover:bg-primary") do %>
+        <%= heroicon "arrow-left-on-rectangle", options: { class: "w-4 mr-2" } %>
+        <%= t('.sign_in') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to(nil, class: "flex items-center text-white bg-primary rounded-md border px-4 py-1 transition-all ease-in-out hover:text-primary hover:bg-white hover:border-1 hover:border-red-600") do %>
+        <%= t('.new_account') %>
+      <% end %>
+    </li>
+  </ul>
+</nav>
