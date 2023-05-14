@@ -1,0 +1,36 @@
+<div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
+  <button type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 md:hidden" id="menu-button">
+    <span class="sr-only">Open sidebar</span>
+    <!-- Heroicon name: outline/menu-alt-2 -->
+    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+    </svg>
+  </button>
+  <div class="flex-1 px-4 flex justify-between">
+    <div class="flex-1 flex">
+    </div>
+    <div class="ml-4 flex items-center md:ml-6">
+      <!-- Profile dropdown -->
+      <div class="ml-3 relative">
+        <div class="text-gray-400 cursor-pointer flex items-center" id="user-menu-button">
+          <% if current_admin.avatar_image&.attached? %>
+            <%= image_tag(@current_admin.avatar_image, class: "rounded-full h-8 w-8 mr-2") %>
+          <% else %>
+            <%= image_tag('avatar.jpeg', class: "rounded-full h-8 w-8 mr-2") %>
+          <% end %>
+          <%= current_admin.email %>
+          <%= heroicon "chevron-down", options: { class: "w-4 text-gray-500 ml-2" } %>
+        </div>
+        <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user-dropdown">
+          <%= link_to(edit_admin_admin_path(current_admin), class: 'block px-4 py-2 text-sm text-gray-500') do %>
+            <%= heroicon "cog-6-tooth", options: { class: "w-4 text-light-500" } %>
+          <% end %>
+          <hr>
+          <%= link_to(destroy_admin_session_path, data: { "turbo-method": :delete }, class: 'block px-4 py-2 text-sm text-gray-700') do %>
+            <%= heroicon "arrow-left-on-rectangle", options: { class: "w-4 text-red-500" } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="flex" data-controller="toggle">
+  <button  data-action="click->toggle#toggle"  type="button" data-input="<%= input_name %>" class="<%= resource.present? ? 'bg-primary-600' : 'bg-gray-200' %> toggle-button relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500" role="switch" aria-checked="true">
+    <span class="sr-only">Use setting</span>
+    <span aria-hidden="true" class="<%= resource.present? ? 'translate-x-5' : 'translate-x-0' %> toggle-span pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
+    <%= form.hidden_field input_name, value: resource.present? ? resource : "false" %>
+  </button>
+  <% unless defined?(hide_label)  %>
+    <label for="<%= input_name %>" class="ml-2 block text-sm font-medium text-gray-700"><%= model.human_attribute_name("#{input_name}") %></label>
+  <% end %>
+</div>

@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    attributes:
+      admin:
+        name: Nome
+        email: E-mail
+        created_at: Criado em
+        updated_at: Atualizado em
+        password: Senha
+        password_confirmation: Confirmar Senha
+        is_active: Ativo?
+        avatar_image: Avatar
