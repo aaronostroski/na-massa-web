@@ -1,0 +1,6 @@
+<nav class="flex-1 px-2 pb-4 space-y-1">
+  <a href="<%= admin_admins_path %>" class="<%= request.path.include?('admins') || current_page?(admin_root_path) ? 'bg-primary-700 text-white' : 'text-primary-50' %> transition-all hover:opacity-80 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+    <%= heroicon "user", options: { class: "w-6 text-white mr-2" } %>
+    <%= t('.admins') %>
+  </a>
+</nav>

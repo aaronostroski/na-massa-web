@@ -77,3 +77,7 @@ gem 'devise'
 
 gem "aws-sdk-s3", "~> 1"
 gem 'aws-sdk-rails'
+
+gem "heroicon"
+gem "scoped_search", "~> 4.1"
+gem "kaminari"

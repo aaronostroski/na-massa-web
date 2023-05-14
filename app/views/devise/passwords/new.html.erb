@@ -1,0 +1,26 @@
+<div class="min-h-full h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8" style="background-image: url('<%= image_path('bg_admin.jpg') %>'); background-size: cover">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <h2 class="mt-6 text-center font-small text-white font-bold"><%= t('.recover_password') %></h2>
+  </div>
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="bg-white px-4 pt-4 pb-8 shadow sm:rounded-lg sm:px-10">
+      <%= image_tag('logo.svg', class: 'mx-auto h-13 w-auto') %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f| %>
+        <%= render partial: "devise/shared/error_messages"  %>
+        <div class="mt-4">
+          <%= f.label :email, class: 'block text-sm font-medium text-gray-700' %>
+          <div class="mt-1">
+            <%= f.email_field :email, autofocus: true, class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm" %>
+          </div>
+        </div>
+        <div class="text-sm mt-2 flex items-center">
+          <%= heroicon "arrow-long-left", options: { class: "w-6 text-primary-500 mr-2" }  %>
+          <%= link_to t('.btn_return_site'), new_admin_session_path, class: "font-medium text-primary-500 hover:text-primary-500" %>
+        </div>
+        <div class="mt-4">
+          <%= f.submit t('.submit'), class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -4,5 +4,9 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  scoped_search on: [:name, :email]
+
+  has_one_attached :avatar_image
+
   validates :email, :name, :is_active, presence: true
 end
