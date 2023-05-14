@@ -15,8 +15,6 @@
         <div class="text-gray-400 cursor-pointer flex items-center" id="user-menu-button">
           <% if current_admin.avatar_image&.attached? %>
             <%= image_tag(@current_admin.avatar_image, class: "rounded-full h-8 w-8 mr-2") %>
-          <% else %>
-            <%= image_tag('avatar.jpeg', class: "rounded-full h-8 w-8 mr-2") %>
           <% end %>
           <%= current_admin.email %>
           <%= heroicon "chevron-down", options: { class: "w-4 text-gray-500 ml-2" } %>

@@ -1,1 +1,1 @@
-Admin.create_with({ name: 'Administrador', password: '123456' }).find_or_create_by(email: 'admin@teste.com') if Rails.env.production?
+Admin.create_with({ name: 'Administrador', password: '123456' }).find_or_create_by(email: 'admin@namassa.com')
