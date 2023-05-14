@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root "admins#index"
     resources :admins, except: [:show]
+    resources :banners, except: [:show]
   end
 end
