@@ -1,4 +1,6 @@
 @import "aos/dist/aos.css";
+@import "@glidejs/glide/dist/css/glide.core.css";
+@import "@glidejs/glide/dist/css/glide.theme.css";
 
 @tailwind base;
 @tailwind components;

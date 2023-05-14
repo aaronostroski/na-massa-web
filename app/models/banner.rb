@@ -5,4 +5,6 @@ class Banner < ApplicationRecord
 
   validates :title, :cover_image, presence: true
   validates :order, numericality: { greater_than: 0 }, uniqueness: true
+
+  scope :active, -> { where(is_active: true)}
 end

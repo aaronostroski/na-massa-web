@@ -1,0 +1,21 @@
+<section class="container mx-auto my-2" data-controller="banners">
+  <div class="glide">
+    <div class="glide__track" data-glide-el="track">
+      <ul class="glide__slides">
+        <% @banners.each do |banner| %>
+          <%= image_tag(banner.cover_image, class: "glide__slide h-[400px]") %>
+        <% end %>
+      </ul>
+    </div>
+    <% if @banners.count > 1 %>
+      <div data-glide-el="controls">
+        <button class="absolute top-[45%] ml-1" data-glide-dir="<">
+          <%= heroicon "chevron-left", options: { class: "h-10 w-10 p-2 bg-primary text-white rounded-full border border-1 transition-all hover:bg-white hover:text-primary hover:border-primary" } %>
+        </button>
+        <button class="absolute right-0 top-[45%] mr-1" data-glide-dir=">">
+          <%= heroicon "chevron-right", options: { class: "h-10 w-10 p-2 bg-primary text-white rounded-full border border-1 transition-all hover:bg-white hover:text-primary hover:border-primary" } %>
+        </button>
+      </div>
+    <% end %>
+  </div>
+</section>
