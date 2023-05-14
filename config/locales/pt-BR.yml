@@ -256,9 +256,10 @@ pt-BR:
       previous: "&lsaquo; Anterior"
       next: "Seguinte &rsaquo;"
       truncate: "&hellip;"
-  menu:
-    admin: Administradores
   layouts:
+    admin:
+      menu:
+        admins: Administradores
     site:
       navbar:
         sign_in: Entrar
