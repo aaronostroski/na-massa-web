@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Na Massa</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Na Massa" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Delivery de comida" %>">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,7 +10,6 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-
   <body class="min-h-screen">
     <%= render partial: "components/flash_messages" %>
     <%= render "layouts/site/navbar" %>
