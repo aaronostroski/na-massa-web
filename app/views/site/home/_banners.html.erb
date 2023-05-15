@@ -1,9 +1,10 @@
 <section class="container mx-auto my-2" data-controller="banners">
+  <h2 class="hidden"><%= t('banners') %></h2>
   <div class="glide">
     <div class="glide__track" data-glide-el="track">
       <ul class="glide__slides">
         <% @banners.each do |banner| %>
-          <%= image_tag(banner.cover_image, class: "glide__slide h-[400px]") %>
+          <%= image_tag(banner.cover_image, class: "glide__slide object-cover h-[600px]") %>
         <% end %>
       </ul>
     </div>
