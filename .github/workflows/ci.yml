@@ -35,49 +35,8 @@ jobs:
           cache: 'yarn'
       - name: Run bundles JS & CSS
         run: |
+          yarn install
           yarn build
           yarn build:css
       - name: Run tests
         run: bundle exec rspec
-# name: CI
-# on: ["push", "pull_request"]
-
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-#     services:
-#       postgres:
-#         image: postgres:11-alpine
-#         ports:          
-#           - "5432:5432"        
-#         env:
-#           POSTGRES_DB: na_massa_web_test
-#     env:
-#       RAILS_ENV: test
-#       DATABASE_URL: "postgres://localhost:5432/na_massa_web_test"
-#     steps:
-#       - uses: actions/checkout@v3
-#       - name: Set up Ruby
-#         uses: ruby/setup-ruby@v1
-#         with:
-#           ruby-version: 3.2.1
-#       - name: Install Node.js and Yarn
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: '19.2.0'
-#           cache: 'yarn'
-#       - name: Install dependencies
-#         run: |
-#           gem install bundler
-#           bundle install --jobs 4 --retry 3
-#       - name: Create database
-#         run: |
-#           bundle exec rails db:create
-#           bundle exec rails db:migrate
-#       - name: Run bundles JS & CSS
-#         run: |
-#           yarn build
-#           yarn build:css
-#       - name: Run tests
-#         run: |
-#           bundle exec rspec
