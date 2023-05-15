@@ -13,6 +13,7 @@ jobs:
           POSTGRES_DB: na_massa_web_test
     env:
       RAILS_ENV: test
+      DATABASE_URL: "postgres://localhost:5432/na_massa_web_test"
     steps:
       - uses: actions/checkout@v3
       - name: Set up Ruby
