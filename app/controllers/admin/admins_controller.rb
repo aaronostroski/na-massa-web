@@ -1,5 +1,5 @@
 class Admin::AdminsController < AdminController
-  before_action :set_admin, only: [:edit, :update, :destroy]
+  before_action :set_admin, only: %i[edit update destroy]
 
   def index
     @filters = parse_filters
@@ -18,7 +18,7 @@ class Admin::AdminsController < AdminController
     @admin = Admin.new(form_params)
 
     if @admin.save
-      flash[:success] = I18n.t('.views.defaults.sucessfully_created')
+      flash[:success] = I18n.t(".views.defaults.sucessfully_created")
       redirect_to admin_admins_path
     else
       render :new, status: :unprocessable_entity
@@ -30,19 +30,21 @@ class Admin::AdminsController < AdminController
 
   def update
     params = form_params.to_h
-    params = params.except!(:password, :password_confirmation) if params[:password].blank?
+    params = params.except!(:password, :password_confirmation) if params[
+      :password
+    ].blank?
 
     if @admin.update(params)
-      flash[:success] = I18n.t('.views.defaults.sucessfully_updated')
+      flash[:success] = I18n.t(".views.defaults.sucessfully_updated")
       redirect_to admin_admins_path
     else
-      render :edit,  status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @admin.destroy
-    flash[:success] = I18n.t('.views.defaults.sucessfully_deleted')
+    flash[:success] = I18n.t(".views.defaults.sucessfully_deleted")
     redirect_to admin_admins_path
   end
 
@@ -53,14 +55,9 @@ class Admin::AdminsController < AdminController
   end
 
   def form_params
-    params.require(:admin).permit([
-      :name,
-      :email,
-      :is_active,
-      :password,
-      :password_confirmation,
-      :avatar_image
-    ])
+    params.require(:admin).permit(
+      %i[name email is_active password password_confirmation avatar_image],
+    )
   end
 
   def set_admin

@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
   before_action :authenticate_admin!
-  layout 'admin'
+  layout "admin"
 
   def current_page
     params[:page] || 1
