@@ -31,8 +31,8 @@ jobs:
           bundle install --jobs 4 --retry 3
       - name: Create database
         run: |
-          bundle exec rails db:create
-          bundle exec rails db:migrate
+          rails db:create
+          rails db:migrate
       - name: Run tests
         run: |
           bundle exec rspec
