@@ -11,7 +11,9 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: myapp_test
+          POSTGRES_DB: na_massa_web_test
+    env:
+      RAILS_ENV: test
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
