@@ -23,6 +23,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.1
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
       # Add or replace database setup steps here
       - name: Set up database schema
         run: bin/rails db:schema:load
