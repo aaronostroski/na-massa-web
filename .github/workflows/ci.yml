@@ -4,14 +4,15 @@ on: ["push", "pull_request"]
 jobs:
   test:
     runs-on: ubuntu-latest
-    postgres:
-      image: postgres:11-alpine
-      ports:          
-        - "5432:5432"        
+    services:
+      postgres:
+        image: postgres:11-alpine
+        ports:          
+          - "5432:5432"        
+        env:
+          POSTGRES_DB: na_massa_web_test
       env:
-        POSTGRES_DB: na_massa_web_test
-    env:
-      RAILS_ENV: test
+        RAILS_ENV: test
     steps:
       - uses: actions/checkout@v3
       - name: Set up Ruby
