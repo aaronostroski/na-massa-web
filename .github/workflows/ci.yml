@@ -6,9 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:14
+        image: postgres:14-alphine
         ports: ['5432:5432']
         env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
           POSTGRES_DB: na_massa_web_test
     env:
       RAILS_ENV: test
