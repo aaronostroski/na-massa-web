@@ -9,8 +9,6 @@ jobs:
         image: postgres:11-alpine
         ports: ['5432:5432']
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
           POSTGRES_DB: na_massa_web_test
     env:
       RAILS_ENV: test
