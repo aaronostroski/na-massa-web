@@ -57,7 +57,8 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
-
+  config.active_storage.silence_invalid_content_types_warning = true
+  
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   Rails.application.routes.default_url_options = { host: 'http://localhost:3000' }
 end
