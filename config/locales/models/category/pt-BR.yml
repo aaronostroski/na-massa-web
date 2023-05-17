@@ -4,6 +4,7 @@ pt-BR:
       category:
         name: Título
         is_active: Ativo?
+        cover_image: Imagem
         order: Ordem
         created_at: Criado em
         updated_at: Atualizado em
