@@ -1,11 +1,12 @@
 FactoryBot.define do
-  factory :banner do
-    title { FFaker::Book.title }
+  factory :category do
+    name { FFaker::Book.title }
+    is_active { false }
     sequence(:order) { |n| n }
     cover_image do
       Rack::Test::UploadedFile.new(
-        Rails.root.join("spec/support/banner.jpg"),
-        "image/jpg",
+        Rails.root.join('spec/support/banner.jpg'),
+        'image/jpg',
       )
     end
 

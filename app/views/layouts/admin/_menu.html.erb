@@ -7,4 +7,8 @@
     <%= heroicon "photo", options: { class: "w-6 text-white mr-2" } %>
     <%= t('.banners') %>
   </a>
+  <a href="<%= admin_categories_path %>" class="<%= request.path.include?('categories') ? 'bg-primary-700 text-white' : 'text-primary-50' %> transition-all hover:opacity-80 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+    <%= heroicon "building-storefront", options: { class: "w-6 text-white mr-2" } %>
+    <%= t('.categories') %>
+  </a>
 </nav>

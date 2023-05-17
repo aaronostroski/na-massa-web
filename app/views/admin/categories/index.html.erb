@@ -1,0 +1,76 @@
+<h1 class="text-2xl font-semibold text-gray-900"><%= t('.heading') %></h1>
+
+<div class="mt-4">
+  <%= link_to(new_admin_category_path, class: "inline-flex items-center justify-center rounded-md border border-transparent bg-primary-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:w-auto") do %>
+    <%= heroicon "plus-small", options: { class: "w-4 text-white mr-2" } %>
+    </span><%= t('.add') %>
+  <% end %>
+  <%= form_for(:filters, model: @filters, url: admin_categories_path, method: :get) do |f| %>
+    <div class="bg-white shadow sm:rounded-lg mt-4">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="mt-2 max-w-xl text-sm text-gray-500">
+          <p><%=t('.search_label_filter')%></p>
+        </div>
+        <div class="flex mt-5">
+          <div class="w-full sm:max-w-xs">
+            <%= f.text_field(:q, class: "shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md", placeholder: t('.search_text_by')) %>
+          </div>
+          <div class="w-full sm:max-w-xs ml-4">
+            <%= f.select(:status, options_for_select(@status, @filters.status), {include_blank: 'Todos'}, class: "block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm") %>
+          </div>
+          <button type="submit" class="flex items-center ml-4 px-6 py-2 border-2 border-primary-500 text-primary-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+            <%= heroicon "magnifying-glass", options: { class: "w-4 text-primary-600 mr-2" } %>
+            <%=t('.search_placeholder')%>
+          </button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="mt-8 flow-root">
+  <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+      <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-300">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"><%= Category.human_attribute_name(:title) %></th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= Category.human_attribute_name(:cover_image) %></th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= Category.human_attribute_name(:is_active) %></th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= Category.human_attribute_name(:order) %></th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= Category.human_attribute_name(:created_at) %></th>
+              <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                <span class="sr-only">Edit</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white">
+            <% @categories.each do |category| %>
+            <tr class="even:bg-gray-50">
+              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= category.name %></td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                <%= image_tag(category.cover_image, class: "h-28") %>
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                <%= render "components/badge", label: t('views.defaults.active'), class_css: 'bg-green-100 text-green-800' if category.is_active? %>
+                <%= render "components/badge", label: t('views.defaults.inactive'), class_css: 'bg-red-100 text-red-800' unless category.is_active? %>
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> <%= category.order %> </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> <%= I18n.l(category.created_at, format: :long) %> </td>
+              <td class="whitespace-nowrap pl-3 py-4 text-sm text-gray-500">
+                <%= link_to(edit_admin_category_path(category), class: 'btn btn-primary btn-sm icon-btn inline-block', data: { turbo: false}) do %>
+                  <%= heroicon "pencil-square", options: { class: "transition-all w-4 text-primary-500 hover:text-primary-800" } %>
+                <% end %>
+                <%= link_to(admin_category_path(category), data: { turbo_method: :delete, turbo_confirm: 'Você tem certeza?' },  class: 'inline-block btn btn-outline-danger btn-sm icon-btn borderless') do %>
+                  <%= heroicon "trash", options: { class: "ml-1 transition-all w-4 text-primary-500 hover:text-primary-800" } %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<%= paginate @categories %>
