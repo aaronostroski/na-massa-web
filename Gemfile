@@ -59,6 +59,7 @@ group :development, :test do
   gem 'pry'
   gem 'ffaker'
   gem 'solargraph'
+  gem 'rails-controller-testing'
 end
 
 group :development do
