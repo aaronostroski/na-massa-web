@@ -11,4 +11,8 @@
     <%= heroicon "building-storefront", options: { class: "w-6 text-white mr-2" } %>
     <%= t('.categories') %>
   </a>
+  <a href="<%= admin_products_path %>" class="<%= request.path.include?('products') ? 'bg-primary-700 text-white' : 'text-primary-50' %> transition-all hover:opacity-80 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+    <%= heroicon "shopping-bag", options: { class: "w-6 text-white mr-2" } %>
+    <%= t('.products') %>
+  </a>
 </nav>
