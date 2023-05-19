@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    attributes:
+      product:
+        name: Nome
+        description: Descrição
+        price: Preço
+        is_active: Ativo?
+        cover_image: Imagem
+        created_at: Criado em
+        updated_at: Atualizado em
