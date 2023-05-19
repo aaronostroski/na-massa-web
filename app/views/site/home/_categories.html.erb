@@ -1,0 +1,26 @@
+<section id="categories" class="container mx-auto my-4">
+  <div class="flex items-center justify-between">
+    <h2 class="text-lg font-bold tracking-tight text-gray-900"><%= t('.categories') %></h2>
+    <%= link_to(nil, class: 'transition-all duration-150 ease-in-out text-sm font-semibold text-primary hover:text-primary-500', alt: t('.see_categories') ) do %>
+      <%= t('.see_categories') %>
+      <span aria-hidden="true"> &rarr;</span>
+    <% end %>
+  </div>
+  <div class="mt-4 flow-root">
+    <div class="-my-2">
+      <div class="box-content h-80 overflow-x-auto py-2">
+        <div class="grid grid-cols-2 gap-4 md:gap-8 lg:gap-x-8 md:grid-cols-3 lg:grid-cols-5">
+          <% @categories.each do |category| %>
+            <%= link_to(nil, class: 'transition-all duration-150 ease-in-out relative flex object-cover h-80 max-w-56 flex-col rounded-lg p-6 hover:opacity-75', alt: category.name) do %>
+              <span aria-hidden="true" class="absolute inset-0">
+                <%= image_tag(category.cover_image, class: "h-full w-full object-cover object-center", alt: category.name) %>
+              </span>
+              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+              <span class="relative mt-auto text-center text-xl font-bold text-white"><%= category.name %></span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
