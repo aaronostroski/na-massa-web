@@ -8,8 +8,10 @@ import FlashController from "./flash_controller"
 import ToggleControler from "./toggle_controller"
 import AOSController from "./aos_controller"
 import BannersController from "./banners_controller"
+import SlimSelectController from "./slim_select_controller"
 
 application.register("flash", FlashController)
 application.register("toggle", ToggleControler)
 application.register("aos", AOSController)
 application.register("banners", BannersController)
+application.register("slim-select", SlimSelectController)
