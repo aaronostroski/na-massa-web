@@ -14,6 +14,12 @@
               <%= f.text_area :description, required: true, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
             </div>
             <div class="col-span-3">
+              <label class="block text-sm font-medium text-gray-700 required"><%= Product.human_attribute_name(:category_ids) %></label>
+              <div data-controller="slim-select">
+                <%= f.select(:category_ids, options_for_select(@categories, selected: @current_category_products), {include_blank: false}, multiple: true, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 w-full shadow-sm sm:text-sm border-gray-300 rounded-md", data: { slim_select_target: 'input' }) %>
+              </div>
+            </div>
+            <div class="col-span-3">
               <label class="block text-sm font-medium text-gray-700 required"><%= Product.human_attribute_name(:price) %></label>
               <%= f.number_field :price, min: 0, required: true, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
             </div>

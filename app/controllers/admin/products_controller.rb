@@ -1,12 +1,20 @@
 class Admin::ProductsController < AdminController
-  before_action :set_product, only: %i[edit update destroy]
+  before_action :set_product,
+                :set_current_category_products,
+                only: %i[edit update destroy]
+  before_action :set_categories, only: %i[index new create edit update]
   before_action :set_active, only: [:index]
 
   def index
     @filters = parse_filters
 
-    products = Product.order(id: :desc)
+    products = Product.includes(:categories).order(id: :desc)
     products = products.search_for(@filters.q) if @filters.q.present?
+    products =
+      products.where(categories: { id: @filters.category_ids }) if @filters
+      .category_ids
+      .reject(&:empty?)
+      .any?
     products =
       products.where(is_active: @filters.active) if @filters.active.present?
 
@@ -54,7 +62,12 @@ class Admin::ProductsController < AdminController
 
   def form_params
     params.require(:product).permit(
-      %i[name description price cover_image is_active],
+      :name,
+      :description,
+      :price,
+      :cover_image,
+      :is_active,
+      category_ids: [],
     )
   end
 
@@ -64,5 +77,13 @@ class Admin::ProductsController < AdminController
 
   def set_active
     @active = I18n.t('admin.products.active').map(&:reverse)
+  end
+
+  def set_categories
+    @categories = Category.active.order(name: :asc).pluck(:name, :id)
+  end
+
+  def set_current_category_products
+    @current_category_products = @product.categories.pluck(:id)
   end
 end

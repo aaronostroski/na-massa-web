@@ -9,6 +9,9 @@ FactoryBot.define do
         'image/png',
       )
     end
+    category_ids do
+      [FactoryBot.create(:category).id, FactoryBot.create(:category).id]
+    end
 
     trait :active do
       is_active { true }

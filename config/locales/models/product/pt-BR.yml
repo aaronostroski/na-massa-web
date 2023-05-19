@@ -7,5 +7,6 @@ pt-BR:
         price: Preço
         is_active: Ativo?
         cover_image: Imagem
+        category_ids: Categorias
         created_at: Criado em
         updated_at: Atualizado em

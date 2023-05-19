@@ -1,4 +1,5 @@
 @import "aos/dist/aos.css";
+@import "./slim_select_tailwind.css";
 @import "@glidejs/glide/dist/css/glide.core.css";
 @import "@glidejs/glide/dist/css/glide.theme.css";
 

@@ -11,14 +11,17 @@
         <div class="mt-2 max-w-xl text-sm text-gray-500">
           <p><%=t('.search_label_filter')%></p>
         </div>
-        <div class="flex mt-5">
-          <div class="w-full sm:max-w-xs">
+        <div class="flex flex-col md:flex-row lg:flex-row mt-5">
+          <div class="w-full">
             <%= f.text_field(:q, class: "shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md", placeholder: t('.search_text_by')) %>
           </div>
-          <div class="w-full sm:max-w-xs ml-4">
-            <%= f.select(:active, options_for_select(@active, @filters.active), {include_blank: 'Todos'}, class: "block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm") %>
+          <div class="w-full ml-4" data-controller="slim-select">
+            <%= f.select(:category_ids, options_for_select(@categories, selected: @filters.category_ids), {include_blank: false}, multiple: true, class: "shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md", data: { slim_select_target: 'input' }) %>
           </div>
-          <button type="submit" class="flex items-center ml-4 px-6 py-2 border-2 border-primary-500 text-primary-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+          <div class="w-full ml-4">
+            <%= f.select(:active, options_for_select(@active, @filters.active), {include_blank: 'Todos'}, class: "block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm inline-block") %>
+          </div>
+          <button type="submit" class="flex items-center ml-4 px-6 py-2 border-2 border-primary-500 text-primary-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out inline-block">
             <%= heroicon "magnifying-glass", options: { class: "w-4 text-primary-600 mr-2" } %>
             <%=t('.search_placeholder')%>
           </button>
@@ -35,9 +38,9 @@
           <thead class="bg-gray-50">
             <tr>
               <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"><%= Product.human_attribute_name(:name) %></th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= Product.human_attribute_name(:category_ids) %></th>
               <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= Product.human_attribute_name(:description) %></th>
               <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= Product.human_attribute_name(:price) %></th>
-              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= Product.human_attribute_name(:cover_image) %></th>
               <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= Product.human_attribute_name(:is_active) %></th>
               <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= Product.human_attribute_name(:created_at) %></th>
               <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
@@ -49,11 +52,13 @@
             <% @products.each do |product| %>
             <tr class="even:bg-gray-50">
               <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= product.name %></td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                <% product.categories.each do |category| %>
+                  <%= render "components/badge", label: category.name, class_css: 'bg-primary text-white' %>
+                <% end %>
+              </td>
               <td class="px-3 py-4 text-sm text-gray-500 overflow-y-auto max-w-8"> <%= product.description %> </td>
               <td class="px-3 py-4 text-sm text-gray-500"> <%= number_to_currency(product.price) %> </td>
-              <td class="w-28 px-3 py-4 text-sm text-gray-500">
-                <%= image_tag(product.cover_image, class: "h-28") %>
-              </td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                 <%= render "components/badge", label: t('views.defaults.active'), class_css: 'bg-green-100 text-green-800' if product.is_active? %>
                 <%= render "components/badge", label: t('views.defaults.inactive'), class_css: 'bg-red-100 text-red-800' unless product.is_active? %>
