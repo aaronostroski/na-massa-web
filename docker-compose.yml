@@ -2,6 +2,8 @@ version: "3"
 services:
   app:
     build: .
+    volumes:
+      - .:/myapp
     ports:
       - "3000:3000"
     depends_on:
@@ -10,7 +12,7 @@ services:
     image: postgres:13
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
       POSTGRES_DB: na_massa_web_development
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - "5432:5432"

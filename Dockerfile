@@ -28,17 +28,12 @@ RUN echo "host all all 0.0.0.0/0 md5" >> /etc/postgresql/13/main/pg_hba.conf
 RUN echo "listen_addresses='*'" >> /etc/postgresql/13/main/postgresql.conf
 
 # Install Node.js dependencies
-# COPY package.json ./
-# COPY yarn.lock ./
-# RUN yarn install
+COPY package.json ./
+COPY yarn.lock ./
+RUN npm install
 
 # Copy the rest of the application code
 COPY . .
-
-# COPY app/javascript ./app/javascript
-
-# # Build the JavaScript files
-# RUN yarn build --watch
 
 # Start the Rails server
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
