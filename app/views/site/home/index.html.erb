@@ -1,4 +1,25 @@
 <% set_meta_title "Na Massa - Home" %>
 <% set_meta_description "Delivery de Comida - Entregamos com maior qualidade!" %>
 
-<%= render "banners" %>
+<section id="banners" class="container mx-auto my-2" data-controller="banners">
+  <h2 class="hidden"><%= t('banners') %></h2>
+  <div class="glide">
+    <div class="glide__track" data-glide-el="track">
+      <ul class="glide__slides">
+        <% @banners.each do |banner| %>
+          <%= image_tag(banner.cover_image, class: "glide__slide object-cover h-[600px]", alt: banner.title) %>
+        <% end %>
+      </ul>
+    </div>
+    <% if @banners.count > 1 %>
+      <div data-glide-el="controls">
+        <button class="opacity-80 absolute top-[45%] ml-1" data-glide-dir="<">
+          <%= heroicon "chevron-left", options: { alt: "left", class: "h-10 w-10 p-2 bg-primary text-white rounded-full border border-1 transition-all hover:bg-white hover:text-primary hover:border-primary" } %>
+        </button>
+        <button class="opacity-80 absolute right-0 top-[45%] mr-1" data-glide-dir=">">
+          <%= heroicon "chevron-right", options: { alt: "right", class: "h-10 w-10 p-2 bg-primary text-white rounded-full border border-1 transition-all hover:bg-white hover:text-primary hover:border-primary" } %>
+        </button>
+      </div>
+    <% end %>
+  </div>
+</section>

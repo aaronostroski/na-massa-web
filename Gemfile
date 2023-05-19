@@ -60,6 +60,7 @@ group :development, :test do
   gem 'ffaker'
   gem 'solargraph'
   gem 'rails-controller-testing'
+  gem "capybara"
 end
 
 group :development do
