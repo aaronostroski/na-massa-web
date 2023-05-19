@@ -260,6 +260,9 @@ pt-BR:
     admin:
       menu:
         admins: Administradores
+        banners: Banners
+        categories: Categorias
+        products: Produtos
     site:
       navbar:
         sign_in: Entrar
