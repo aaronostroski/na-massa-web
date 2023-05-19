@@ -52,4 +52,24 @@ RSpec.describe 'Home', type: :feature do
       expect(page).to_not have_selector("[data-glide-dir='>']", visible: :all)
     end
   end
+
+  describe '#categories' do
+    it 'Must have categories if are active' do
+      category1 = FactoryBot.create(:category, :active, name: 'Ctg 1')
+      category2 = FactoryBot.create(:category, :active, name: 'Ctg 2')
+
+      visit(site_home_path)
+
+      expect(page).to have_css("img[alt='#{category1.name}']")
+      expect(page).to have_css("img[alt='#{category2.name}']")
+    end
+
+    it 'Section cant has categories if thet are desactive' do
+      FactoryBot.create(:category, name: 'Ctg 1')
+
+      visit(site_home_path)
+
+      expect(page).to have_css('#categories > img', count: 0, wait: 5)
+    end
+  end
 end
