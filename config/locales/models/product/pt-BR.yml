@@ -6,6 +6,7 @@ pt-BR:
         description: Descrição
         price: Preço
         is_active: Ativo?
+        is_highlight: Destaque?
         cover_image: Imagem
         category_ids: Categorias
         created_at: Criado em
