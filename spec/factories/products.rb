@@ -16,5 +16,9 @@ FactoryBot.define do
     trait :active do
       is_active { true }
     end
+
+    trait :highlighted do
+      is_highlight { true }
+    end
   end
 end
