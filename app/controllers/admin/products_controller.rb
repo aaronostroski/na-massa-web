@@ -13,8 +13,8 @@ class Admin::ProductsController < AdminController
     products =
       products.where(categories: { id: @filters.category_ids }) if @filters
       .category_ids
-      .reject(&:empty?)
-      .any?
+      &.reject(&:empty?)
+      &.any?
     products =
       products.where(is_active: @filters.active) if @filters.active.present?
 
@@ -67,6 +67,7 @@ class Admin::ProductsController < AdminController
       :price,
       :cover_image,
       :is_active,
+      :is_highlight,
       category_ids: [],
     )
   end
