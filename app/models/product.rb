@@ -13,4 +13,7 @@ class Product < ApplicationRecord
             :category_ids,
             presence: true
   validates :price, numericality: { greater_than: 0 }
+
+  scope :active, -> { where(is_active: true) }
+  scope :highlighted, -> { where(is_highlight: true) }
 end

@@ -10,11 +10,18 @@ FactoryBot.define do
       )
     end
     category_ids do
-      [FactoryBot.create(:category).id, FactoryBot.create(:category).id]
+      [
+        FactoryBot.create(:category, :active).id,
+        FactoryBot.create(:category, :active).id,
+      ]
     end
 
     trait :active do
       is_active { true }
+    end
+
+    trait :highlighted do
+      is_highlight { true }
     end
   end
 end

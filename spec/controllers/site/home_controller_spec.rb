@@ -28,5 +28,20 @@ RSpec.describe Site::HomeController, type: :controller do
         [category1_active, category2_active],
       )
     end
+
+    it 'Assigns @highlighted_products' do
+      product_active_and_highlighted =
+        FactoryBot.create(:product, :active, :highlighted)
+      product_active = FactoryBot.create(:product, :active)
+      product_not_active = FactoryBot.create(:product, :highlighted)
+
+      get :index
+      expect(assigns(:highlighted_products)).to include(
+        product_active_and_highlighted,
+      )
+      expect(assigns(:highlighted_products)).to_not match_array(
+        [product_active, product_not_active],
+      )
+    end
   end
 end
