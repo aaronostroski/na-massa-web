@@ -10,7 +10,10 @@ FactoryBot.define do
       )
     end
     category_ids do
-      [FactoryBot.create(:category).id, FactoryBot.create(:category).id]
+      [
+        FactoryBot.create(:category, :active).id,
+        FactoryBot.create(:category, :active).id,
+      ]
     end
 
     trait :active do

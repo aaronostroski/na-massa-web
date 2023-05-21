@@ -1,7 +1,7 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/forms"), require('@tailwindcss/aspect-ratio')],
   content: [
     "./app/views/**/*.html.erb",
     "./app/helpers/**/*.rb",

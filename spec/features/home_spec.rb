@@ -72,4 +72,25 @@ RSpec.describe 'Home', type: :feature do
       expect(page).to have_css('#categories > img', count: 0, wait: 5)
     end
   end
+
+  describe '#highlighted products' do
+    it 'Must have hilight products if was marked as highlight and active' do
+      product_active_and_highlighted =
+        FactoryBot.create(:product, :active, :highlighted)
+      product_active = FactoryBot.create(:product, :active)
+      product_not_active = FactoryBot.create(:product, :highlighted)
+
+      visit(site_home_path)
+
+      expect(page).to have_css(
+        "#highlighted_products div[id='#{product_active_and_highlighted.id}']",
+      )
+      expect(page).to_not have_css(
+        "#highlighted_products div[id='#{product_active.id}']",
+      )
+      expect(page).to_not have_css(
+        "#highlighted_products div[id='#{product_not_active.id}']",
+      )
+    end
+  end
 end

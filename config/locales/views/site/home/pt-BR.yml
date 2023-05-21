@@ -1,0 +1,8 @@
+pt-BR:
+  site:
+    home:
+      categories:
+        categories: Categorias
+        see_categories: Ver todas as categorias
+      products:
+        highlighted_products: Produtos em destaque
