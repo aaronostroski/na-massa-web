@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_03_205042) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_03_213058) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,6 +82,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_205042) do
     t.index ["product_id"], name: "index_category_products_on_product_id"
   end
 
+  create_table "order_products", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id", "product_id"], name: "index_order_products_on_order_id_and_product_id", unique: true
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["product_id"], name: "index_order_products_on_product_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.decimal "total", precision: 12, scale: 2, default: "0.0"
     t.datetime "requested_at"
@@ -108,4 +118,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_205042) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "category_products", "categories"
   add_foreign_key "category_products", "products"
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "products"
 end
