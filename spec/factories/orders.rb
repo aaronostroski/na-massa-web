@@ -1,17 +1,6 @@
 FactoryBot.define do
   factory :order do
-    sgid
-
-    trait :with_user do
-      user
-    end
-
-    trait :with_anonymous do
-      sgid { self.to_sgid.to_s }
-    end
-
     trait :requested do
-      with_anonymous
       requested_at { Time.current }
     end
 
@@ -26,9 +15,9 @@ FactoryBot.define do
       finished_at { Time.current }
     end
 
-    trait :develired do
+    trait :delivered do
       finished
-      develired_at { Time.current }
+      delivered_at { Time.current }
     end
 
     trait :cancelled do

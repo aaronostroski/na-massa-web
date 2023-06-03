@@ -1,16 +1,12 @@
 class Order < ApplicationRecord
-  belongs_to :user, required: false
-
-  validate :sgid, uniqueness: true
-
   def pending?
     requested_at.nil? && accepted_at.nil? && finished_at.nil? &&
-      develired_at.nil? && cancelled_at.nil?
+      delivered_at.nil? && cancelled_at.nil?
   end
 
   def requested?
     requested_at.present? && accepted_at.nil? && finished_at.nil? &&
-      develired_at.nil? && cancelled_at.nil?
+      delivered_at.nil? && cancelled_at.nil?
   end
 
   def accepted?
