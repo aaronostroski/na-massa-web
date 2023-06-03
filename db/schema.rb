@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_20_174235) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_03_205042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_174235) do
     t.index ["category_id", "product_id"], name: "index_category_products_on_category_id_and_product_id", unique: true
     t.index ["category_id"], name: "index_category_products_on_category_id"
     t.index ["product_id"], name: "index_category_products_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "total", precision: 12, scale: 2, default: "0.0"
+    t.datetime "requested_at"
+    t.datetime "accepted_at"
+    t.datetime "finished_at"
+    t.datetime "delivered_at"
+    t.datetime "cancelled_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
