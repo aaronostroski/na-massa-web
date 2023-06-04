@@ -1,0 +1,8 @@
+pt-BR:
+  activemodel:
+    errors:
+      models:
+        add_product_to_cart:
+          attributes:
+            base:
+              product_doesnt_exist: Este produto não existe no nosso sistema!
