@@ -1,4 +1,7 @@
 class Order < ApplicationRecord
+  has_many :order_products, dependent: :destroy
+  has_many :products, through: :order_products
+
   def pending?
     requested_at.nil? && accepted_at.nil? && finished_at.nil? &&
       delivered_at.nil? && cancelled_at.nil?

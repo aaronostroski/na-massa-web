@@ -24,5 +24,9 @@ FactoryBot.define do
       requested
       cancelled_at { Time.current }
     end
+
+    trait :with_products do
+      products { [FactoryBot.create(:product)] }
+    end
   end
 end
