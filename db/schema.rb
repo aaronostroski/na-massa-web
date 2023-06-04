@@ -87,7 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_213058) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id", "product_id"], name: "index_order_products_on_order_id_and_product_id", unique: true
+    t.index ["order_id", "product_id"], name: "index_order_products_on_order_id_and_product_id"
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end

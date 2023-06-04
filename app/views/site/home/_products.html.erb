@@ -24,7 +24,9 @@
               <span class="text-lg font-semibold text-gray-950"><%= product.price %></span>
             </div>
             <div class="bg-gray-200 flex items-center p-2 rounded ml-2 mr-2">
-              <%= heroicon "plus-small", options: { class: "w-4 text-primary" } %>
+              <%= link_to(cart_add_product_path(product), data: { turbo_method: :post }) do %>
+                <%= heroicon "plus-small", options: { class: "w-4 text-primary" } %>
+              <% end %>
               <span class="font-medium mx-2 text-gray-950"><%= "0" %></span>
               <%= heroicon "minus-small", options: { class: "w-4 text-primary" } %>
             </div>
