@@ -7,6 +7,6 @@ class CreateOrderProducts < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_index :order_products, %i[order_id product_id], unique: true
+    add_index :order_products, %i[order_id product_id]
   end
 end

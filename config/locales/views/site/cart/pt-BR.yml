@@ -1,0 +1,5 @@
+pt-BR:
+  site:
+    cart:
+      flashs:
+        successful_add_to_cart: Produto adicionado com sucesso ao seu carrinho!
