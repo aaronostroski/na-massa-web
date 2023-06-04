@@ -6,3 +6,8 @@ pt-BR:
           attributes:
             base:
               product_doesnt_exist: Este produto não existe no nosso sistema!
+        remove_product_from_cart:
+          attributes:
+            base:
+              product_doesnt_exist: Este produto não existe no nosso sistema!
+              no_products_to_remove: Não e possivel remover um produto que você não tem no carrinho!
