@@ -1,6 +1,5 @@
 class AddProductToCart
   include ActiveModel::Model
-  include ActiveRecord::Callbacks # Include the callbacks module
 
   attr_accessor :sgid, :order, :product, :product_id
 
