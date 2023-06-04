@@ -4,7 +4,7 @@ class AddProductToCart
 
   attr_accessor :sgid, :order, :product, :product_id
 
-  validates :product, :product_id, presence: true
+  validates :order, :product, :product_id, presence: true
   validate :product_should_exist
 
   def save
