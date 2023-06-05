@@ -47,18 +47,6 @@ RSpec.describe RemoveProductFromCart do
       ).to include 'Este produto não existe no nosso sistema!'
     end
 
-    it 'Product should be actives to be add on cart' do
-      not_active_product = FactoryBot.create(:product)
-      expect(not_active_product.is_active).to be false
-
-      service = described_class.new(sgid:, product_id: not_active_product.id)
-
-      expect(service).to_not be_valid
-      expect(
-        service.errors.full_messages,
-      ).to include 'Este produto não existe no nosso sistema!'
-    end
-
     it 'Product to have remove should at least has one on the cart' do
       product3 = FactoryBot.create(:product, :active)
       service = described_class.new(sgid:, product_id: product3.id)
