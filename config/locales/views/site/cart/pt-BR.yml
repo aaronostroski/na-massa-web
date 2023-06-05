@@ -3,3 +3,4 @@ pt-BR:
     cart:
       flashs:
         successful_add_to_cart: Produto adicionado com sucesso ao seu carrinho!
+        successful_remove_from_cart: Produto removido com sucesso do seu carrinho!

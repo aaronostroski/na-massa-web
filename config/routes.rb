@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   scope module: :site do
     post 'cart/add_product/:id', to: 'cart#add_product', as: :cart_add_product
+    post 'cart/remove_product/:id',
+         to: 'cart#remove_product',
+         as: :cart_remove_product
   end
 
   namespace :admin do
