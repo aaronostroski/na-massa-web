@@ -27,7 +27,9 @@
                 <%= heroicon "plus-small", options: { class: "w-4 text-primary" } %>
               <% end %>
               <span class="font-medium mx-2 text-gray-950"><%= "0" %></span>
-              <%= heroicon "minus-small", options: { class: "w-4 text-primary" } %>
+              <%= link_to(cart_remove_product_path(product), data: { turbo_method: :post }) do %>
+                <%= heroicon "minus-small", options: { class: "w-4 text-primary" } %>
+              <% end %>
             </div>
             <span class="bg-primary rounded p-2">
               <%= heroicon "shopping-cart", options: { class: "w-6 text-white" } %>
