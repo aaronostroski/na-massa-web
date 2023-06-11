@@ -44,9 +44,9 @@ RSpec.describe Site::CartController, type: :controller do
     end
 
     it 'Returns error if product failed to remove from the cart' do
-      product1.update(is_active: false)
+      fake_id = 1000
 
-      post :remove_product, params: { id: product1.id }
+      post :remove_product, params: { id: fake_id }
       expect(flash[:error]).to include(
         I18n.t(
           '.activemodel.errors.models.add_product_to_cart.attributes.base.product_doesnt_exist',

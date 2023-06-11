@@ -6,15 +6,9 @@ class Site::CartController < SiteController
       session[:sgid] = service.sgid if sgid.nil?
       flash[:success] = I18n.t('.site.cart.flashs.successful_add_to_cart')
       respond_to do |format|
+        format.html
         format.turbo_stream do
-          render turbo_stream:
-                   turbo_stream.update(
-                     "product_#{service.product.id}",
-                     partial: 'site/cart/total_products',
-                     locals: {
-                       product: service.product,
-                     },
-                   )
+          render turbo_stream: turbo_stream_update_params(service.product)
         end
       end
     else
@@ -29,15 +23,9 @@ class Site::CartController < SiteController
     if service.save
       flash[:success] = I18n.t('.site.cart.flashs.successful_remove_from_cart')
       respond_to do |format|
+        format.html
         format.turbo_stream do
-          render turbo_stream:
-                   turbo_stream.update(
-                     "product_#{service.product.id}",
-                     partial: 'site/cart/total_products',
-                     locals: {
-                       product: service.product,
-                     },
-                   )
+          render turbo_stream: turbo_stream_update_params(service.product)
         end
       end
     else
@@ -48,7 +36,13 @@ class Site::CartController < SiteController
 
   private
 
-  def sgid
-    @sgid = session[:sgid]
+  def turbo_stream_update_params(product)
+    turbo_stream.update(
+      "product_#{product.id}",
+      partial: 'site/cart/total_products',
+      locals: {
+        product: product,
+      },
+    )
   end
 end
