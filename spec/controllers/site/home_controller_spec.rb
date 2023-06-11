@@ -43,5 +43,16 @@ RSpec.describe Site::HomeController, type: :controller do
         [product_active, product_not_active],
       )
     end
+
+    it 'Assigns helper method current_order and sgid' do
+      order = FactoryBot.create(:order, :with_products)
+      session[:sgid] = order.to_sgid.to_s
+
+      current_order = controller.send(:current_order)
+      sgid = controller.send(:sgid)
+
+      expect(current_order).to eq(current_order)
+      expect(sgid).to eql(session[:sgid])
+    end
   end
 end
