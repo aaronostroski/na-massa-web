@@ -41,7 +41,7 @@ RSpec.describe AddProductToCart do
       existing_order = FactoryBot.create(:order, :with_products)
       sgid = existing_order.to_sgid.to_s
 
-      expect(existing_order.products.count).to eql(1)
+      expect(existing_order.products.count).to eql(2)
 
       service = described_class.new(sgid:, product_id: product.id)
 

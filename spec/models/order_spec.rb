@@ -18,4 +18,13 @@ RSpec.describe Order, type: :model do
     expect(order_delivered).to be_delivered
     expect(order_cancelled).to be_cancelled
   end
+
+  it 'Total products by product' do
+    order = FactoryBot.create(:order, :with_products)
+    expect(order.products.count).to eql(2)
+
+    total_products_by_product =
+      order.total_products_by_product(order.products.first)
+    expect(total_products_by_product).to eql(1)
+  end
 end
