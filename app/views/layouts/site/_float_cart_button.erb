@@ -1,0 +1,7 @@
+<button data-action="click->cart#open" type="button" class="fixed bg-primary rounded-full p-4" style="bottom: 10px; right: 10px;">
+  <%= turbo_stream_from "total_order" %>
+  <span id="total_order" class="absolute rounded-full w-6 flex items-center justify-center h-6 bg-white text-primary text-xs top-0 right-0">
+    <%= render("site/cart/total_order",  total: current_order&.order_products&.count) %> 
+  </span>
+  <%= heroicon "shopping-cart", options: { class: "w-8 h-8 text-white" } %>
+</button>

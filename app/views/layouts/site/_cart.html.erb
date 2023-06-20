@@ -1,22 +1,20 @@
-<div data-controller="cart">
-  <div class="w-full h-full fixed bottom-0 top-0 left-0 right-0 bg-black opacity-50 pointer" data-cart-target="overlay"></div>
-  <div class="transition-all linear delay-100 fixed right-0 shadow-sm rounded-md p-6 bg-white md:right-0 lg:right-0 md:fixed md:inset-y-0 md:z-50 md:flex md:w-96 md:flex-col lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-96 lg:flex-col overflow-y-auto" data-cart-target="cartMenu">
-    <div class="grid grid-cols-2 items-center gap-x-6">
-      <button type="button" role="close" class="col-span-2 self-end mb-4 justify-self-end" data-action="click->cart#close">
-        <%= heroicon "x-mark", options: { class: "w-6 text-primary" } %>
-      </button>
-      <h2 class="text-sm font-semibold text-gray-500 inline col-span-1"><%= t('.my_cart')%></h2>
-      <%= link_to(nil, class: 'transition-all duration-150 ease-in-out text-sm font-semibold text-primary hover:text-primary-500 col-span-1 text-right', alt: t('.see_categories') ) do %>
-        <%= t('.see_categories') %>
-        <span aria-hidden="true"> &rarr;</span>
-      <% end %>
-    </div>
-    <hr class="my-4" />
-    <div class="flex flex-col">
-      <%= turbo_stream_from "cart" %>
-      <div id="cart">
-        <%= render('layouts/site/products') %>
-      </div>
+<div class="hidden w-full h-full fixed bottom-0 top-0 left-0 right-0 bg-black opacity-50 pointer" data-cart-target="overlay"></div>
+<div class="transition-all linear delay-100 fixed right-0 shadow-sm rounded-md p-6 bg-white md:right-0 lg:right-0 md:fixed md:inset-y-0 md:z-50 md:flex md:w-96 md:flex-col lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-96 lg:flex-col overflow-y-auto hide-cart-menu" data-cart-target="cartMenu">
+  <div class="grid grid-cols-2 items-center gap-x-6">
+    <button type="button" role="close" class="col-span-2 self-end mb-4 justify-self-end" data-action="click->cart#close">
+      <%= heroicon "x-mark", options: { class: "w-6 text-primary" } %>
+    </button>
+    <h2 class="text-sm font-semibold text-gray-500 inline col-span-1"><%= t('.my_cart')%></h2>
+    <%= link_to(nil, class: 'transition-all duration-150 ease-in-out text-sm font-semibold text-primary hover:text-primary-500 col-span-1 text-right', alt: t('.see_categories') ) do %>
+      <%= t('.see_categories') %>
+      <span aria-hidden="true"> &rarr;</span>
+    <% end %>
+  </div>
+  <hr class="my-4" />
+  <div class="flex flex-col">
+    <%= turbo_stream_from "cart" %>
+    <div id="cart">
+      <%= render('layouts/site/products') %>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <div>
   <span class="font-medium mx-2 text-gray-950">
-    <%= current_order&.order_products&.where(product: product)&.count %>
+    <%= current_order&.order_products&.where(product: product)&.count || 0 %>
   </span>
 </div>

@@ -13,7 +13,7 @@
   <body class="min-h-screen">
     <%= render partial: "components/flash_messages" %>
     <%= render "layouts/site/navbar" %>
-    <main>
+    <main data-controller="cart">
       <%= yield %>
     </main>
     <%= render "layouts/site/footer" %>

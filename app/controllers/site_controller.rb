@@ -5,6 +5,8 @@ class SiteController < ApplicationController
 
   def current_order
     @current_order ||= GlobalID::Locator.locate_signed(sgid) if sgid
+  rescue
+    nil
   end
 
   def sgid

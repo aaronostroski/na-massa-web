@@ -6,7 +6,7 @@ class OrderProduct < ApplicationRecord
 
   after_commit(on: %i[create destroy]) do
     broadcast_action_to(
-      'total_products',
+      "total_products",
       action: :update,
       target: nil,
       targets: ".product_#{product.id}",
@@ -18,12 +18,22 @@ class OrderProduct < ApplicationRecord
     )
 
     broadcast_action_to(
-      'cart',
+      "cart",
       action: :replace,
       target: 'cart',
       partial: 'layouts/site/products',
       locals: {
         current_order: order,
+      },
+    )
+
+    broadcast_action_to(
+      "total_order",
+      action: :update,
+      target: "total_order",
+      partial: 'site/cart/total_order',
+      locals: {
+        total: order.order_products.count,
       },
     )
   end
