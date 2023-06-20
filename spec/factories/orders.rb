@@ -26,7 +26,7 @@ FactoryBot.define do
     end
 
     trait :with_products do
-      products { [FactoryBot.create(:product)] }
+      products { [FactoryBot.create(:product), FactoryBot.create(:product)] }
     end
   end
 end

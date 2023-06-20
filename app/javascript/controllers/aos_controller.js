@@ -3,7 +3,6 @@ import AOS from "aos";
 
 export default class extends Controller {
   connect() {
-    console.log("test")
     AOS.init({ disableMutationObserver: false });
   }
 
