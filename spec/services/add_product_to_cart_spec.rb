@@ -47,8 +47,8 @@ RSpec.describe AddProductToCart do
 
       expect(service).to be_valid
       expect(service.save).to be true
-
-      expect(existing_order.products.count).to eql(2)
+      
+      expect(existing_order.order_products.count).to eql(3)
       expect(service.order).to eql(existing_order)
       expect(service.order.products).to include(product)
       expect(service.sgid).to eql(sgid)

@@ -4,7 +4,7 @@
     <div class="-mx-px grid grid-cols-2 border-l border-gray-200 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">
       <% products.each do |product| %>
       <div id="<%= product.id %>" class="rounded-sm p-4 border-b border-r border-gray-200 flex flex-col items-center justify-center">
-        <%= image_tag(product.cover_image, class: "h-28 w-28 object-cover m-0 rounded-full", alt: product.name) %>
+      <%= image_tag(product.cover_image, class: "shadow h-28 w-28 object-cover m-0 rounded-full", alt: product.name) %>
         <div class="flex flex-col items-center justify-center mt-4">
           <div class="text-center">
             <% product.categories.each do |category| %>
@@ -26,7 +26,8 @@
               <%= link_to(cart_add_product_path(product), data: { turbo_method: :post }) do %>
                 <%= heroicon "plus-small", options: { class: "w-4 text-primary" } %>
               <% end %>
-              <div id="<%= dom_id product %>">
+              <%= turbo_stream_from "total_products" %>
+              <div class=<%="product_#{product.id}"%>>
                 <%= render("site/cart/total_products",  product: product) %> 
               </div>
               <%= link_to(cart_remove_product_path(product), data: { turbo_method: :post }) do %>

@@ -1,0 +1,30 @@
+<% current_order&.products&.order(id: :asc)&.distinct&.each do |product| %>
+  <div class="grid grid-cols-4 gap-2 my-4">
+    <%= image_tag(url_for(product.cover_image), class: "shadow col-span-1 h-14 w-14 object-cover m-0 rounded-full", alt: product.name) %>
+    <div class="col-span-2">
+      <h3 class="col-span-2 text-sm font-semibold text-gray-500 mb-2"><%= product.name %></h3>
+      <% product.categories.each do |category| %>
+        <%= link_to(admin_admins_path, class: "transitiona-all duration-150 ease-in-out hover:opacity-80") do %>
+          <%= render "components/badge", label: category.name.capitalize, class_css: 'text-sm font-medium bg-amber-100 text-amber-400' %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="flex flex-col col-span-1">
+      <span class="text-base font-semibold  text-gray-950"><%= number_to_currency(product.price) %></span>
+      <span class="text-sm font-semibold  text-gray-500"><%= number_to_currency(product.price) %></span>
+    </div>
+    <%= link_to(t('.remove_all_products'), cart_remove_all_products_path(product), data: { turbo_method: :delete }, class: "mt-4 text-primary self-center col-span-1 font-medium text-gray-500 text-sm") %>
+    <div class="col-span-3 bg-gray-200 flex items-center p-2 rounded w-fit justify-self-end mt-4">
+      <%= link_to(cart_add_product_path(product), data: { turbo_method: :post }) do %>
+        <%= heroicon "plus-small", options: { class: "w-4 text-primary" } %>
+      <% end %>
+      <div class="<%= dom_id product %>">
+        <%= render("site/cart/total_products",  current_order: current_order, product: product) %> 
+      </div>
+      <%= link_to(cart_remove_product_path(product), data: { turbo_method: :post }) do %>
+        <%= heroicon "minus-small", options: { class: "w-4 text-primary" } %>
+      <% end %>
+    </div>
+  </div>
+  <hr />
+<% end %>

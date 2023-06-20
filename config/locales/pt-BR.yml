@@ -270,3 +270,8 @@ pt-BR:
       footer:
         maded_by: "Feito por: %{name}"
         inspired_by: Rocketseat Coffee Delivery
+      cart:
+        my_cart: Meu carrinho
+        see_categories: Ver categorias
+      products:
+        remove_all_products: Remover

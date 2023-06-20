@@ -8,8 +8,7 @@
 @tailwind utilities;
 
 @layer base {
-  label.required:after,
-  h5.rquired:after {
+  label.required:after {
       content: " *"
   }
 
@@ -21,5 +20,9 @@
 
   * {
       print-color-adjust: exact;
+  }
+
+  .hide-cart-menu {
+    right: -24rem !important;
   }
 }

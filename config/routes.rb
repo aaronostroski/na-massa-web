@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     post 'cart/remove_product/:id',
          to: 'cart#remove_product',
          as: :cart_remove_product
+    delete 'cart/remove_all_products/:id',
+           to: 'cart#remove_all_products',
+           as: :cart_remove_all_products
   end
 
   namespace :admin do
