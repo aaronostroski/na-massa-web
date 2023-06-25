@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     delete 'cart/remove_all_products/:id',
            to: 'cart#remove_all_products',
            as: :cart_remove_all_products
+    get 'finish_order', to: 'order#finish', as: :site_finish_order
+    resources :order_infos, only: [:create], as: :site_create_order_infos
   end
 
   namespace :admin do

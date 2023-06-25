@@ -1,5 +1,5 @@
 <% current_order&.products&.order(id: :asc)&.distinct&.each do |product| %>
-  <div class="grid grid-cols-4 gap-2 my-4 bg-gray-100 rounded-md shadow p-4 fade-in">
+  <div class="grid grid-cols-4 gap-2 my-2 bg-gray-100 rounded-md shadow p-4">
     <%= image_tag(url_for(product.cover_image), class: "shadow col-span-1 h-14 w-14 object-cover m-0 rounded-full", alt: product.name) %>
     <div class="col-span-2">
       <h3 class="col-span-2 text-sm font-semibold text-gray-500 mb-2"><%= product.name %></h3>
@@ -28,7 +28,7 @@
   </div>
   <hr />
 <% end %>
-<% unless current_order.order_products&.count > 0 %>
+<% if current_order&.order_products&.count == 0 || current_order.nil? %>
   <div class="bg-gray-100 p-4 text-primary font-semilbold text-md rounded-md text-center">
     <%= t('.no_products_added') %>
   </div>
