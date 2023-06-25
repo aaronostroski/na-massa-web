@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  has_one :order_info, dependent: :destroy
+
   has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
 

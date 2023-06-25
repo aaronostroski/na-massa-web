@@ -12,25 +12,25 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block text-sm medium text-gray-400 required"><%= OrderInfo.human_attribute_name(:first_name) %></label>
-            <%= f.text_field :first_name, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+            <%= f.text_field :first_name, value: current_order&.order_info&.first_name, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
           </div>
           <div>
             <label class="block text-sm medium text-gray-400 required"><%= OrderInfo.human_attribute_name(:last_name) %></label>
-            <%= f.text_field :last_name, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+            <%= f.text_field :last_name, value: current_order&.order_info&.last_name, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
           </div>
         </div>
         <div class="mt-2 col-span-2">
           <label class="block text-sm medium text-gray-400 required"><%= OrderInfo.human_attribute_name(:email) %></label>
-          <%= f.text_field :email, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+          <%= f.text_field :email, value: current_order&.order_info&.email, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
         </div>
         <div class="grid grid-cols-2 gap-4 mt-2">
           <div>
             <label class="block text-sm medium text-gray-400 required"><%= OrderInfo.human_attribute_name(:cpf) %></label>
-            <%= f.text_field :cpf, data: { controller: "mask", mask: '000.000.000-00' }, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %> 
+            <%= f.text_field :cpf, value: current_order&.order_info&.cpf, data: { controller: "mask", mask: '000.000.000-00' }, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %> 
           </div>
           <div>
             <label class="block text-sm medium text-gray-400 required"><%= OrderInfo.human_attribute_name(:phone) %></label>
-            <%= f.text_field :phone, data: { controller: "mask", mask: '(00) 00000-0000' },class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+            <%= f.text_field :phone, value: current_order&.order_info&.phone, data: { controller: "mask", mask: '(00) 00000-0000' },class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
           </div>
         </div>
         <hr class="my-4"/>
