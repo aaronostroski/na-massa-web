@@ -28,7 +28,7 @@
   </div>
   <hr />
 <% end %>
-<% unless current_order.order_products&.count > 0 %>
+<% if current_order&.order_products&.count == 0 || current_order.nil? %>
   <div class="bg-gray-100 p-4 text-primary font-semilbold text-md rounded-md text-center">
     <%= t('.no_products_added') %>
   </div>
