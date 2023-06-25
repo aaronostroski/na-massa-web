@@ -1,0 +1,7 @@
+pt-BR:
+  site:
+    order:
+      personal_data:
+        title: Dados pessoais 
+        sub_title: Insira seus dados pessoais para entrega, utilizaremos somente para conferirmos o remetente do produto final.
+        send: Confirmar

@@ -12,7 +12,8 @@
     "esbuild": "^0.16.9",
     "postcss": "^8.4.20",
     "slim-select": "1.27.1",
-    "tailwindcss": "^3.2.4"
+    "tailwindcss": "^3.2.4",
+    "imask": "^6.4.3"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
