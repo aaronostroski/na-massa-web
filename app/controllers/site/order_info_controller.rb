@@ -1,4 +1,4 @@
-class Site::OrderController < SiteController
+class Site::OrderInfoController < SiteController
   def create
   end
 end
