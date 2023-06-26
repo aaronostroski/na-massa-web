@@ -17,5 +17,5 @@
       <%= render('layouts/site/products') %>
     </div>
   </div>
-  <%= link_to(t('.finish_order'), site_finish_order_path, class: "w-full p-4 text-center bg-primary text-white font-medium text-sm uppercase transition-all hover:opacity-80 block mt-2") %>
+  <%= link_to(t('.finish_order'), site_finish_order_path(step: 1), class: "w-full p-4 text-center bg-primary text-white font-medium text-sm uppercase transition-all hover:opacity-80 block mt-2") %>
 </div>

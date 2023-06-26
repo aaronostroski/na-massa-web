@@ -1,2 +1,2 @@
-<%= heroicon "chevron-down", options: { class: "w-4 text-primary cursor-pointer down #{'hidden' unless form_step == @step}", data_action: "click->order#toggleCollapsible", data_section_id: "personal_data" } %>
-<%= heroicon "chevron-up", options: { class: "w-4 text-primary cursor-pointer up #{'hidden' if form_step == @step}", data_action: "click->order#toggleCollapsible", data_section_id: "personal_data" } %>
+<%= heroicon "chevron-down", options: { class: "w-4 text-primary cursor-pointer down #{'hidden' if form_step == @step}", data_action: "click->order#toggleCollapsible", data_section_id: section_id } %>
+<%= heroicon "chevron-up", options: { class: "w-4 text-primary cursor-pointer up #{'hidden' unless form_step == @step}", data_action: "click->order#toggleCollapsible", data_section_id: section_id } %>

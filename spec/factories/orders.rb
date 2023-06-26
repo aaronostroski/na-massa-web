@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :order do
+    address
+
     trait :requested do
+      payment_method { :cash }
       requested_at { Time.current }
     end
 

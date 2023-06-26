@@ -7,6 +7,10 @@ class Order < ApplicationRecord
   has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
 
+  enum payment_method: %i[card pix cash]
+
+  validates :payment_method, presence: true, if: -> { requested_at.present? }
+
   def total_products_by_product(product)
     order_products.where(product:).count
   end

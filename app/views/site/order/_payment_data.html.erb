@@ -1,0 +1,32 @@
+  <div id="payment_data" class="rounded-md border bg-gray-50 shadow px-6 py-4 mt-2">
+    <div class="flex items-center">
+      <%= heroicon "currency-dollar", options: { class: "w-4 text-primary mr-4" } %>
+      <h2 class="text-lg font-bold tracking-tight text-gray-900 grow"><%= t(".title") %></h2>
+      <%= render "arrows_collapsibles", form_step: 3, section_id: "payment_data" %>
+    </div>
+    <div class="collapsible transition-all linear delay-250 max-h-0 overflow-hidden <%= "max-h-full" if @step == 3 %>">
+      <p class="text-gray-400 font-medium text-sm"><%= t('.sub_title') %></p>
+      <hr class="my-4"/>
+      <%= form_with model: [:site, :update_payment, current_order] do |f| %>
+        <div class="flex items-center">
+          <label class="flex bg-white p-4 items-center border rounded-md shadow grow text-primary transition-all hover:opacity-80 cursor-pointer">
+            <%= f.radio_button :payment_method, :cash, checked: current_order.cash?, class: "w-5 h-5 text-primary focus:outline-none focus:ring-primary" %>
+            <%= heroicon "banknotes", options: { class: "w-8  mx-2" } %>
+            <span class="text-sm font-semibold text-gray-400"><%= t('.payment_method')[0] %></span>
+          </label>
+          <label class="mx-4 flex bg-white p-4 w-fit items-center border rounded-md text-primary shadow grow transition-all hover:opacity-80 cursor-pointer">
+            <%= f.radio_button :payment_method, :card, checked: current_order.card?, class: "w-5 h-5  text-primary focus:outline-none focus:ring-primary" %>
+            <%= heroicon "credit-card", options: { class: "w-8 mx-2" } %>
+            <span class="text-sm font-semibold text-gray-400"><%= t('.payment_method')[1] %></span>
+          </label>
+          <label class="flex bg-white p-4 w-fit items-center border rounded-md text-primary shadow grow transition-all hover:opacity-80 cursor-pointer">
+            <%= f.radio_button :payment_method, :pix, checked: current_order.pix?, class: "w-5 h-5 text-primary focus:outline-none focus:ring-primary" %>
+            <%= heroicon "qr-code", options: { class: "w-8 mx-2" } %>
+            <span class="text-sm font-semibold text-gray-400"><%= t('.payment_method')[2] %></span>
+          </label>
+        </div>
+        <hr class="my-4"/>
+        <%= f.submit t('.send'), class: "cursor-pointer w-fit py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary transition-all hover:text-primary hover:border-primary hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500" %>
+      <% end %>
+    </div>
+  </div>

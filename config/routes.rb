@@ -12,6 +12,9 @@ Rails.application.routes.draw do
            to: 'cart#remove_all_products',
            as: :cart_remove_all_products
     get 'finish_order', to: 'order#finish', as: :site_finish_order
+    patch 'update_payment_order',
+          to: 'order#update_payment',
+          as: :site_update_payment_order
     resources :order_infos, only: [:create], as: :site_create_order_infos
     resources :addresses, only: [:create], as: :site_create_addresses
   end
