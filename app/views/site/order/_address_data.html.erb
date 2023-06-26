@@ -2,10 +2,9 @@
   <div class="flex items-center">
     <%= heroicon "envelope", options: { class: "w-4 text-primary mr-4" } %>
     <h2 class="text-lg font-bold tracking-tight text-gray-900 grow"><%= t(".title") %></h2>
-    <%= heroicon "chevron-down", options: { class: "w-4 text-primary cursor-pointer down", data_action: "click->order#toggleCollapsible", data_section_id: "address_data" } %>
-    <%= heroicon "chevron-up", options: { class: "w-4 text-primary cursor-pointer hidden up", data_action: "click->order#toggleCollapsible", data_section_id: "address_data" } %>
+    <%= render "arrows_collapsibles", form_step: 2 %>
   </div>
-  <div class="collapsible transition-all linear delay-250 max-h-0 overflow-hidden">
+  <div class="collapsible transition-all linear delay-250 max-h-0 overflow-hidden <%= "max-h-full" if @step == 2 %>">
     <p class="text-gray-400 font-medium text-sm"><%= t('.sub_title') %></p>
     <hr class="my-4"/>
     <%= form_with model: [:site, :create, @address] do |f| %>

@@ -19,8 +19,8 @@ RSpec.describe 'FinishOrder', type: :feature do
       visit(site_finish_order_path)
 
       expect(page).to have_css('#personal_data')
-      expect(page).to have_css('#personal_data .hidden.down')
-      expect(page).to_not have_css('#personal_data .hidden.up')
+      expect(page).to have_css('#personal_data .hidden.up')
+      expect(page).to_not have_css('#personal_data .hidden.down')
       expect(page).to have_css('#personal_data .collapsible.max-h-full')
 
       expect(page).to have_selector(
