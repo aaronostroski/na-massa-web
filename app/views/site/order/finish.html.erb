@@ -1,3 +1,6 @@
 <section class="container mx-auto grid grid-cols-2 gap-6 my-4" data-controller="order">
-  <%= render "site/order/personal_data" %>
+  <div class="flex flex-col">
+    <%= render "site/order/personal_data" %>  
+    <%= render "site/order/address_data" %>
+  </div>
 </section>

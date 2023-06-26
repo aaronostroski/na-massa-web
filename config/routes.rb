@@ -13,6 +13,7 @@ Rails.application.routes.draw do
            as: :cart_remove_all_products
     get 'finish_order', to: 'order#finish', as: :site_finish_order
     resources :order_infos, only: [:create], as: :site_create_order_infos
+    resources :addresses, only: [:create], as: :site_create_addresses
   end
 
   namespace :admin do
