@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   belongs_to :address, required: false
 
   has_one :order_info, dependent: :destroy
+  accepts_nested_attributes_for :order_info, allow_destroy: true
 
   has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
