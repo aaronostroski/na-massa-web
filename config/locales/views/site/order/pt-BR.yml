@@ -5,3 +5,7 @@ pt-BR:
         title: Dados pessoais 
         sub_title: Insira seus dados pessoais para entrega, utilizaremos somente para conferirmos o remetente do produto final.
         send: Confirmar
+      address_data:
+        title: Endereço para entrega 
+        sub_title: Insira seus dados para entrega do produto
+        send: Confirmar
