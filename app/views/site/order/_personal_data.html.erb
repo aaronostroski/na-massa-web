@@ -1,8 +1,8 @@
-  <div id="personal_data" class="rounded-md border bg-gray-50 shadow px-6 py-4">
+  <div id="personal_data" class="rounded-md border bg-gray-50 shadow px-6 py-4 mt-2">
     <div class="flex items-center">
       <%= heroicon "user", options: { class: "w-4 text-primary mr-4" } %>
       <h2 class="text-lg font-bold tracking-tight text-gray-900 grow"><%= t(".title") %></h2>
-      <%= render "arrows_collapsibles", form_step: 1 %>
+      <%= render "arrows_collapsibles", form_step: 1, section_id: "personal_data" %>
     </div>
     <div class="collapsible transition-all linear delay-250 max-h-0 overflow-hidden <%= "max-h-full" if @step == 1 %>">
       <p class="text-gray-400 font-medium text-sm"><%= t('.sub_title') %></p>

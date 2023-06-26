@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    attributes:
+      order:
+        payment_method: 
+          card: Cartão Crédito/Débito
+          cash: Dinheiro
+          pix: Pix

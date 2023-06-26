@@ -9,3 +9,8 @@ pt-BR:
         title: Endereço para entrega 
         sub_title: Insira seus dados para entrega do produto
         send: Confirmar
+      payment_data:
+        title: Forma de pagamento 
+        sub_title: Escolha a forma de pagamento que fará na entrega do pedido
+        payment_method: ["Dinheiro", "Cartão", "Pix"]
+        send: Confirmar
