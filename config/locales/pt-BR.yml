@@ -273,6 +273,7 @@ pt-BR:
       cart:
         my_cart: Meu carrinho
         see_categories: Ver categorias
+        finish_order: Finilizar perdido
       products:
         remove_all_products: Remover
         no_products_added: Sem produtos adicionado ao carrinho!
