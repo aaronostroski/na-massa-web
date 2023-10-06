@@ -1,0 +1,33 @@
+name: Discord Webhook
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const webhookUrl = https://discord.com/api/webhooks/1159661543512875109/krXUm3sD0mOyqyHiJBIhyweepQqTRQ44EHQeKnznVComgrTp0LFNFjTdmuqDEzUmkQaY;
+            const release = 'teste';
+
+            const embed = {
+              title: `New release: ${release}`,
+              description: `${process.env.RELEASE_URL}`,
+            };
+
+            const message = {
+              embeds: [embed],
+            };
+
+            await fetch(webhookUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(message),
+            });
